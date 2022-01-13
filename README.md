@@ -13,10 +13,10 @@ If you're not familiar with using `grep`, it's very easy for use-cases like this
 Say you make the following two guesses:
 
 ```
-DRUNK
+ D R U N K
 ⬛🟩⬛🟨⬛
 
-FIGHT
+ F I G H T
 ⬛⬛🟨⬛⬛
 ```
 
