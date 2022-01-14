@@ -2,7 +2,7 @@
 A randomly-ordered list of all possible words that are potentially valid in wordle, taken straight from the game's source code. Use it like:
 
 ```bash
-curl https://raw.githubusercontent.com/tabatkins/wordle-list/main/words | grep ...
+curl -s https://raw.githubusercontent.com/tabatkins/wordle-list/main/words | grep ...
 ```
 
 Filtering Guesses With `grep`
@@ -23,7 +23,7 @@ Say you make the following two guesses:
 Then you can whittle down the wordlist with the following chain of greps:
 
 ```bash
-curl ... | grep -v [dukfiht] | grep .r... | grep n | grep g | grep -v ..gn.
+curl -s ... | grep -v [dukfiht] | grep .r... | grep n | grep g | grep -v ..gn.
 ```
 
 which'll return the following list of potentially valid words:
