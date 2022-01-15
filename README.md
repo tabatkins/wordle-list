@@ -23,7 +23,7 @@ Say you make the following two guesses:
 Then you can whittle down the wordlist with the following chain of greps:
 
 ```bash
-curl -s ... | grep -v [dukfiht] | grep .r... | grep n | grep g | grep -v ..gn.
+curl -s ... | grep -v [dukfiht] | grep .r... | grep n | grep -v ...n. | grep g | grep -v ..g..
 ```
 
 which'll return the following list of potentially valid words:
@@ -41,8 +41,7 @@ The general structure of the chain of `grep`s is always the same:
 
 1. Remove all the letters that returned a black tile with `grep -v [abcd]`, putting all the rejected letters between the square brackets. `grep -v` means "reject anything that matches this pattern", and the pattern will match any word containing one of those letters.
 2. Force any letters that returned a green tile with `grep .a..b`, putting the letters in their appropriate spot and using `.` for anything you haven't gotten a green on yet. Make sure to pass all five characters, or else it'll match incorrectly.
-3. For any tile with a yellow, first filter for words containing the letter with `grep a`, adding more as separate greps if you have multiple yellow letters. This pattern just checks that the letter shows up *anywhere* in the word.
-4. Finally, reject any words that would use your yellow tiles where they appeared with `grep -v a..b.`, putting the letters in the spot they showed up and using `.` for anything you haven't gotten a yellow on yet. If you've gotten two yellows in the same spot, wrap them in square brackets to group them together in the same same position, like `grep -v .[ab]...` if the second tile was a yellow A for one guess and a yellow B for another. Again, make sure you fill out all five positions, or else this'll match incorrectly.
+3. For any tile with a yellow, first filter for words containing the letter with `grep a`, then filter out words with the letter in that position with `grep -v ..a..`; repeating more pairs if you have multiple yellow letters. Again, make sure to include `.`s to fill out a full five characters, or else it'll match incorrectly.
 
 If you used any doubled letters in your guess, it's potentially more complicated:
 * if both came up black, or both came up green, then it's fine. Just follow the above instructions like normal.
