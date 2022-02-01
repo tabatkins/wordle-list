@@ -29,11 +29,8 @@ curl -s ... | grep -v [dukfiht] | grep .r... | grep n | grep -v ...n. | grep g |
 which'll return the following list of potentially valid words:
 
 ```
-grain
 groan
-groin
 green
-grein
 grown
 ```
 
