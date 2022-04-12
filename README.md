@@ -1,5 +1,5 @@
 # wordle-list
-A randomly-ordered list of all possible words that are potentially valid in wordle, taken straight from the game's source code. Use it like:
+A randomly-ordered list of all possible words that are potentially valid guesses in wordle, taken straight from the game's source code. Use it like:
 
 ```bash
 curl -s https://raw.githubusercontent.com/tabatkins/wordle-list/main/words | grep ...
